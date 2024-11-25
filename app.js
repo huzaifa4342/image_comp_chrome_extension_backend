@@ -21,12 +21,21 @@ const pool = new Pool({
   host: process.env.HOST,
   database: process.env.DATABASE,
   password: process.env.PASSWORD,
-  port: process.env.PORT,
+  port: process.env.DB_PORT,
 });
 
 function databaseConnection() {
   return pool.connect();
 }
+// (async () => {
+//   try {
+//     const client = await pool.connect();
+//     console.log('Connected to the database successfully!');
+//     client.release();
+//   } catch (err) {
+//     console.error('Error connecting to the database:', err.message);
+//   }
+// })();
 
 function cleanAndParseJson(rawData) {
     try {

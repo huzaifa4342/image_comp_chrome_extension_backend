@@ -4,6 +4,14 @@ const axios = require("axios");
 const sharp = require("sharp");
 const { Pool } = require("pg");
 var cors = require('cors')
+
+
+const corsOptions ={
+  origin:'*',
+  credentials:true,            //access-control-allow-credentials:true
+  optionSuccessStatus:200,
+}
+
 // const anthropic = require('anthropic');
 const fs = require("fs");
 const path = require("path");
@@ -12,10 +20,11 @@ const Anthropic = require("@anthropic-ai/sdk");
 
 const anthropic = new Anthropic(apiKey=process.env.ANTHROPIC_API_KEY);
 const app = express();
-app.use(cors())
+app.use(cors(corsOptions)) // Use this after the variable declaration
 app.use(bodyParser.json()); // for parsing application/json
 
-console.log("process.env", process.env);
+// console.log("process.env", process.env);
+
 
 // Database connection setup
 const pool = new Pool({

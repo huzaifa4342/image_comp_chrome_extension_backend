@@ -15,9 +15,11 @@ const app = express();
 app.use(cors())
 app.use(bodyParser.json()); // for parsing application/json
 
+console.log("process.env", process.env);
+
 // Database connection setup
 const pool = new Pool({
-  user: process.env.USER,
+  user: process.env.USER_NAME,
   host: process.env.HOST,
   database: process.env.DATABASE,
   password: process.env.PASSWORD,
@@ -27,15 +29,6 @@ const pool = new Pool({
 function databaseConnection() {
   return pool.connect();
 }
-// (async () => {
-//   try {
-//     const client = await pool.connect();
-//     console.log('Connected to the database successfully!');
-//     client.release();
-//   } catch (err) {
-//     console.error('Error connecting to the database:', err.message);
-//   }
-// })();
 
 function cleanAndParseJson(rawData) {
     try {

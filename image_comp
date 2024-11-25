@@ -1,0 +1,88 @@
+--
+-- PostgreSQL database dump
+--
+
+-- Dumped from database version 15.8
+-- Dumped by pg_dump version 17.0
+
+-- Started on 2024-11-25 13:57:26 IST
+
+SET statement_timeout = 0;
+SET lock_timeout = 0;
+SET idle_in_transaction_session_timeout = 0;
+SET transaction_timeout = 0;
+SET client_encoding = 'UTF8';
+SET standard_conforming_strings = on;
+SELECT pg_catalog.set_config('search_path', '', false);
+SET check_function_bodies = false;
+SET xmloption = content;
+SET client_min_messages = warning;
+SET row_security = off;
+
+SET default_tablespace = '';
+
+SET default_table_access_method = heap;
+
+--
+-- TOC entry 215 (class 1259 OID 58694)
+-- Name: image_differences; Type: TABLE; Schema: public; Owner: postgres
+--
+
+CREATE TABLE public.image_differences (
+    id integer NOT NULL,
+    image1_url text,
+    image2_url text,
+    description text
+);
+
+
+ALTER TABLE public.image_differences OWNER TO postgres;
+
+--
+-- TOC entry 214 (class 1259 OID 58693)
+-- Name: image_differences_id_seq; Type: SEQUENCE; Schema: public; Owner: postgres
+--
+
+CREATE SEQUENCE public.image_differences_id_seq
+    AS integer
+    START WITH 1
+    INCREMENT BY 1
+    NO MINVALUE
+    NO MAXVALUE
+    CACHE 1;
+
+
+ALTER SEQUENCE public.image_differences_id_seq OWNER TO postgres;
+
+--
+-- TOC entry 3589 (class 0 OID 0)
+-- Dependencies: 214
+-- Name: image_differences_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: postgres
+--
+
+ALTER SEQUENCE public.image_differences_id_seq OWNED BY public.image_differences.id;
+
+
+--
+-- TOC entry 3439 (class 2604 OID 58697)
+-- Name: image_differences id; Type: DEFAULT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.image_differences ALTER COLUMN id SET DEFAULT nextval('public.image_differences_id_seq'::regclass);
+
+
+--
+-- TOC entry 3441 (class 2606 OID 58701)
+-- Name: image_differences image_differences_pkey; Type: CONSTRAINT; Schema: public; Owner: postgres
+--
+
+ALTER TABLE ONLY public.image_differences
+    ADD CONSTRAINT image_differences_pkey PRIMARY KEY (id);
+
+
+-- Completed on 2024-11-25 13:57:26 IST
+
+--
+-- PostgreSQL database dump complete
+--
+

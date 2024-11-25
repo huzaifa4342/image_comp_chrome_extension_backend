@@ -17,11 +17,11 @@ app.use(bodyParser.json()); // for parsing application/json
 
 // Database connection setup
 const pool = new Pool({
-  user: "postgres",
-  host: "localhost",
-  database: "image-comparison",
-  password: "mohdhuzaifa@123",
-  port: 5432,
+  user: process.env.USER,
+  host: process.env.HOST,
+  database: process.env.DATABASE,
+  password: process.env.PASSWORD,
+  port: process.env.PORT,
 });
 
 function databaseConnection() {
